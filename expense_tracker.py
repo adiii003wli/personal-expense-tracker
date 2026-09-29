@@ -1,59 +1,67 @@
-print("================================")
-print("   PERSONAL EXPENSE TRACKER")
-print("================================")
 
+print("=" * 35)
+print("      PERSONAL EXPENSE TRACKER")
+print("=" * 35)
+
+# Get income and budget
 income = float(input("Enter your monthly income: ₹"))
 budget = float(input("Enter your monthly budget: ₹"))
 
-print("\nExpense Categories:")
-print("1. Food")
-print("2. Travel")
-print("3. Shopping")
-print("4. Bills")
-print("5. Other")
+print("\nEnter your expenses:")
 
-food = 0
-travel = 0
-shopping = 0
-bills = 0
-other = 0
-
-print("\nEnter expenses for each category.")
-
+# Expense categories
 food = float(input("Food: ₹"))
 travel = float(input("Travel: ₹"))
 shopping = float(input("Shopping: ₹"))
 bills = float(input("Bills: ₹"))
 other = float(input("Other: ₹"))
 
+# Calculate total expenses
 total_expenses = food + travel + shopping + bills + other
-balance = income - total_expenses
-budget_balance = budget - total_expenses
 
-print("\n================================")
-print("           SUMMARY")
-print("================================")
+# Calculate balances
+remaining_income = income - total_expenses
+remaining_budget = budget - total_expenses
 
-print("Income: ₹", income)
-print("Budget: ₹", budget)
+# Display summary
+print("\n" + "=" * 35)
+print("           EXPENSE SUMMARY")
+print("=" * 35)
+
+print(f"Income: ₹{income:.2f}")
+print(f"Budget: ₹{budget:.2f}")
 
 print("\nExpenses:")
-print("Food: ₹", food)
-print("Travel: ₹", travel)
-print("Shopping: ₹", shopping)
-print("Bills: ₹", bills)
-print("Other: ₹", other)
+print(f"Food: ₹{food:.2f}")
+print(f"Travel: ₹{travel:.2f}")
+print(f"Shopping: ₹{shopping:.2f}")
+print(f"Bills: ₹{bills:.2f}")
+print(f"Other: ₹{other:.2f}")
 
-print("\nTotal Expenses: ₹", total_expenses)
-print("Remaining Balance: ₹", balance)
+print(f"\nTotal Expenses: ₹{total_expenses:.2f}")
+print(f"Remaining Income: ₹{remaining_income:.2f}")
+print(f"Remaining Budget: ₹{remaining_budget:.2f}")
 
-if budget_balance > 0:
-    print("Budget Remaining: ₹", budget_balance)
-elif budget_balance == 0:
-    print("You have reached your budget.")
+# Budget status
+print("\nBudget Status:")
+
+if remaining_budget > 0:
+    print(f"You are within your budget by ₹{remaining_budget:.2f}")
+elif remaining_budget == 0:
+    print("You have exactly reached your budget.")
 else:
-    print("Budget exceeded by: ₹", abs(budget_balance))
+    print(f"You exceeded your budget by ₹{abs(remaining_budget):.2f}")
 
-print("\n================================")
+# Income status
+print("\nIncome Status:")
+
+if remaining_income > 0:
+    print("You have money remaining after expenses.")
+elif remaining_income == 0:
+    print("Your expenses equal your income.")
+else:
+    print(f"You spent ₹{abs(remaining_income):.2f} more than your income.")
+
+print("\n" + "=" * 35)
 print("       TRACKING COMPLETE")
-print("================================")
+print("=" * 35)
